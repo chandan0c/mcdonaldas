@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mcdonalds shop</title>
+    <style>
+        input{
+            margin-right: 20px;
+        }
+        button{
+            margin:50px 30px ;
+        }
+        #container{
+            width: 100%;
+            height: auto;
+            align-items: center;
+            margin-left: 30px;
+        }
+        #container div{
+            width: 500px;
+            height: auto;
+            text-align: center;
+        }
+        div img{
+            width: 500px;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <form >
+         <input type="checkbox" id="myCheck1" value="burger">burger <br> 
+         <input type="checkbox" id="myCheck2" value="pizza">pizza <br>
+         <input type="checkbox" id="myCheck3" value="noodles">noodles <br>
+         <input type="checkbox" id="myCheck4" value="friedRice">friedrice <br>
+         <input type="checkbox" id="myCheck5" value="frenchFries">frenchfries <br>
+         <button onclick="myfun()">Order Food</button>
+    </form>
+    <h4>your order item will shown below</h4>
+    <div id="container">
+     
+    </div>
+</body>
+    <script>
+        let arr=[]
+        function myfun(){
+            event.preventDefault();
+            var burger=document.getElementById("myCheck1")
+            var pizza=document.getElementById("myCheck2")
+            var noodles=document.getElementById("myCheck3")
+            var friedRice=document.getElementById("myCheck4")
+            var frenchFries=document.getElementById("myCheck5")
+            arr=[]
+            console.log(arr);
+            if(burger.checked==true){
+               arr.push({
+                   name:burger.value,
+                   Image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+               })
+            }
+           if(pizza.checked==true){
+               arr.push({
+                   name:pizza.value,
+                   image:"https://media.istockphoto.com/photos/hawaiian-pizza-with-ham-and-pineapple-picture-id1349383878?b=1&k=20&m=1349383878&s=170667a&w=0&h=3AbAQ2fZXl0BYLr11F_E8C_OxM_-VP9ZIFJ8n185sVg="
+               })
+           }
+           if(noodles.checked==true){
+               arr.push({
+                   name:noodles.value,
+                   image:"https://media.istockphoto.com/photos/spaghetti-alla-puttanesca-italian-pasta-dish-with-tomatoes-black-picture-id1325172440?b=1&k=20&m=1325172440&s=170667a&w=0&h=WS2gPeU01_yzJYsiaHBhOSfrHVKMn-kBxzgsz61a2p8="
+               })
+           }
+           if(friedRice.checked==true){
+               arr.push({
+                   name:friedRice.value,
+                   image:"https://media.istockphoto.com/photos/fried-rice-with-fried-spiced-ham-picture-id1327106892?b=1&k=20&m=1327106892&s=170667a&w=0&h=cfRI1jtv5nQFFetEtY6eCAC-uA1Iw_f3v4owg5lCM1U="
+               })
+           }
+           if(frenchFries.checked==true){
+               arr.push({
+                   name:frenchFries.value,
+                   image:"https://media.istockphoto.com/photos/close-up-of-a-fish-and-chips-platter-with-dipping-sauce-picture-id182690390?b=1&k=20&m=182690390&s=170667a&w=0&h=YCRD3Qe2FnRHeGr7Rf7JWqZnRv13b0nn0UELFM6g0dk="
+               })
+           }
+          var count=1;
+          document.getElementById("container").innerHTML=""
+          for(let i=0;i<arr.length;i++){
+              var image=document.createElement("img");
+              image.setAttribute("src",arr[i].image)
+              var name=document.createElement("h3");
+              name.innerText=arr[i].name;
+              var order=document.createElement("h2");
+              order.innerText="order no "+count;
+              var div=document.createElement("div");
+              div.setAttribute("class","sub-container")
+              div.append(image,name,order)
+              document.getElementById("container").append(div); 
+              count++;
+        }
+    }
+    </script>
+</html>
